@@ -5,7 +5,7 @@ export function ProductsShow(props) {
     console.log('adding to cart...')
     event.preventDefault();    
     const params = new FormData(event.target);    
-    axios.post('http://localhost:3000/carted_products.json', params).then(response => {
+    axios.post('http://localhost:3010/carted_products.json', params).then(response => {
       console.log(response.data)
     })
   }
@@ -17,8 +17,7 @@ export function ProductsShow(props) {
       <p>Name: {props.product.name}</p>
       <p>description: {props.product.description}</p>
       <p>price: {props.product.price}</p> 
-      <p><b>description: </b>{props.products.description}</p>
-      <img src={props.products.image_url} />
+      {/* <img src={props.products.image_url} /> */}
       <form onSubmit={addToCart}>
         <div>
           <input name="product_id" type="hidden" defaultValue={props.product.id}   />

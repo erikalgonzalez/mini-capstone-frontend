@@ -1,13 +1,16 @@
+import axios from 'axios';
 import { ProductsIndex } from './ProductsIndex';
+import { CartedProductsIndex } from './CartedProductsIndex';
 import { ProductsNew } from './ProductsNew';
 import {Modal} from './Modal'
 import { ProductsShow } from './ProductsShow';
-import axios from 'axios';
+import { OrdersIndex } from './OrdersIndex';
+import { OdersShow } from './OrdersShow';
 import { useState, useEffect } from 'react'
 import { Routes, Route } from "react-router-dom";
 import { Signup } from "./Signup";
 import { Login } from "./Login";
-// import { LogoutLink } from "./LogoutLink";
+
 
 
 
@@ -19,15 +22,15 @@ export function Content() {
 
   const handleIndexProducts = () => {
     console.log('get data from rails')
-    axios.get("http://localhost:3000/products.json").then(response => {
-      console.log(response.data)
+    axios.get("http://localhost:3010/products.json").then(response => {
+      // console.log(response.data)
       setProducts(response.data)
     })
   };
 
   const handleCreateProduct = (params, successCallback) => {
     console.log('creating product')
-    axios.post("http://localhost:3000/products.json", params).then(response => {
+    axios.post("http://localhost:3010/products.json", params).then(response => {
       console.log(response.data);  
       setProducts([...products, response.data])
       successCallback()
@@ -54,9 +57,11 @@ export function Content() {
       <Routes>
         <Route path="/signup" element={<Signup />} />
         <Route path="/Login" element={<Login />} />
-        {/* <Route path="/logout" element={<Logoutlink />} /> */}
         <Route path="/products/new" element={<ProductsNew onCreateProduct={handleCreateProduct}/>} />
         <Route path="/" element={<ProductsIndex products={products} onShowProduct={handleShowProduct} />} />
+        <Route path="/cart" element={<CartedProductsIndex />} />
+        <Route path="/orders" element={<OrdersIndex />} />
+        <Route path="/orders/:id" element={<OrdersShow />} />
       </Routes>
       
       {/* <button onClick={handleIndexProducts}>Get products</button> */}
