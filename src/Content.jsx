@@ -5,7 +5,7 @@ import { ProductsNew } from './ProductsNew';
 import {Modal} from './Modal'
 import { ProductsShow } from './ProductsShow';
 import { OrdersIndex } from './OrdersIndex';
-import { OdersShow } from './OrdersShow';
+import { OrdersShow } from './OrdersShow';
 import { useState, useEffect } from 'react'
 import { Routes, Route } from "react-router-dom";
 import { Signup } from "./Signup";
