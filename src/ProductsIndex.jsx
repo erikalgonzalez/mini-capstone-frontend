@@ -16,10 +16,9 @@ export function ProductsIndex(props) {
                 <p className="card-title">{product.price}</p>
                 <p className="card-text">{product.description}</p>
                 <img
-                  src={product.image_url}
-                  class="card-img-top"
-                  alt="..."
-                ></img>
+                  width="300px"
+                  src={product.images[0] && product.images[0].url}
+                />
                 <button
                   className="btn btn-primary"
                   onClick={() => props.onShowProduct(product)}
